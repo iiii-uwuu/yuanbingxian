@@ -1,2 +1,17 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+string s, t;
+cin >> s >> t;
+
+if (s > t)
+{
+	cout << "s>t";
+}
+else if (s == t)
+{
+	cout << "s=t";
+}
+else
+{
+	cout << "s<t";
+}//string直接比较大小
