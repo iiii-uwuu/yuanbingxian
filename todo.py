@@ -36,6 +36,16 @@ def complete_task(tasks,task_id):
             return
     print("❌ 未找到该编号的任务")
 
+def delete_task(tasks,task_id):
+    pre=0
+    for task in tasks:
+        pre+=1
+        if task["id"]==task_id:
+            tasks.pop(pre-1)
+            save_tasks(tasks)
+            return
+    print("❌ 未找到该编号的任务")
+    
 def main():
     tasks=load_tasks()
     print("📋 终端待办工具 (输入 help 查看命令)")
@@ -57,6 +67,12 @@ def main():
                 print("请输入正确的任务编号")
         elif cmd=="help":
             print("可用命令：list, add <任务名>, done <编号>, exit")
+        elif cmd.startswith("delete "):
+            try:
+                task_id=int(cmd[7:].strip())
+                delete_task(tasks,task_id)
+            except ValueError:
+                print("请输入正确的任务编号")
         elif cmd=="exit":
             print("👋 再见！")
             break
